@@ -1,4 +1,10 @@
 
+## How to Run
+1. Install requirements:
+```bash
+pip install -r requirements.txt
+python app1.py
+
 ---
 
 ### **Step 2: Save the file**
