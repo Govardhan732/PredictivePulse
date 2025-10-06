@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PredictivePulse - Blood Pressure Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+        h2 { text-align: center; margin-bottom: 20px; }
+        label { display: block; margin-top: 15px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
+        button { margin-top: 20px; width: 100%; padding: 10px; background: #007BFF; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>PredictivePulse - Blood Pressure Stage Prediction</h2>
+        <form action="{{ url_for('predict') }}" method="POST">
+            {% for col in input_columns %}
+                <label>{{ col }}</label>
+                {% if col in categorical_values %}
+                    <select name="{{ col }}" required>
+                        {% for option in categorical_values[col] %}
+                            <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                {% else %}
+                    <input type="number" name="{{ col }}" step="any" required>
+                {% endif %}
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

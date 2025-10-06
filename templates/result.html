@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; }
+        .container { max-width: 500px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center;}
+        h2 { margin-bottom: 20px; }
+        .prediction { font-size: 24px; margin: 15px 0; color: #007BFF; }
+        .confidence { font-size: 18px; margin: 10px 0; color: #333; }
+        a { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #28a745; color: #fff; border-radius: 4px; text-decoration: none; }
+        a:hover { background: #218838; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction Result</h2>
+        <div class="prediction">
+            Predicted Blood Pressure Stage: <strong>{{ prediction }}</strong>
+        </div>
+        <div class="confidence">
+            Prediction Confidence: <strong>{{ probability|round(2) }}%</strong>
+        </div>
+        <a href="{{ url_for('home') }}">Predict Again</a>
+    </div>
+</body>
+</html>
